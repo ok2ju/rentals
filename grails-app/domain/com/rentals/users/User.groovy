@@ -1,47 +1,45 @@
 package com.rentals.users
 
-import com.rentals.Address;
+import com.rentals.Address
 
 class User {
 
-	transient springSecurityService
-	
-	Address address
-	String tel_no	
-		
-	String username
-	String password
-	boolean enabled = true
-	boolean accountExpired
-	boolean accountLocked
-	boolean passwordExpired
+    transient springSecurityService
 
-	static transients = ['springSecurityService']
+    Address address
+    String tel_no
 
-	static constraints = {
-		username blank: false, unique: true
-		password blank: false
-	}
+    String username
+    String password
+    boolean enabled = true
+    boolean accountExpired
+    boolean accountLocked
+    boolean passwordExpired
 
-	static mapping = {
-		password column: '`password`'
-	}
+    static transients = ['springSecurityService']
 
-	Set<Role> getAuthorities() {
-		UserRole.findAllByUser(this).collect { it.role } as Set
-	}
+    static constraints = {
+        username blank: false, unique: true
+        password blank: false
+    }
 
-	def beforeInsert() {
-		encodePassword()
-	}
+    static mapping = { password column: '`password`' }
 
-	def beforeUpdate() {
-		if (isDirty('password')) {
-			encodePassword()
-		}
-	}
+    Set<Role> getAuthorities() {
+        UserRole.findAllByUser(this).collect { it.role } as Set
+    }
 
-	protected void encodePassword() {
-		password = springSecurityService.encodePassword(password)
-	}
+    def beforeInsert() {
+        encodePassword()
+    }
+
+    def beforeUpdate() {
+        if (isDirty('password')) {
+            encodePassword()
+        }
+    }
+
+    protected void encodePassword() {
+        password = springSecurityService.encodePassword(password)
+    }
 }
