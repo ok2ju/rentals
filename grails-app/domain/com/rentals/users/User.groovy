@@ -21,6 +21,8 @@ class User {
     static constraints = {
         username blank: false, unique: true
         password blank: false
+        address nullable : true
+        tel_no nullable: true
     }
 
     static mapping = { password column: '`password`' }
