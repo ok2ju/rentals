@@ -2,24 +2,25 @@
 <html>
 	<head>
 		<meta name="layout" content="main"/>
-		<title>Welcome to Grails</title>
+		<title>Rentals</title>
 	</head>
 	<body>
         <!-- Main jumbotron for a primary marketing message or call to action -->
-        <div class="jumbotron">
-            <div class="container">
-                <h1>Rentals</h1>
-                <p>В этом учебном проекте описана работа компании, которая оказанием услуг в сфере недвижимости. Компания предлагает услуги владельцам, которые хотят сдать в аренду свою недвижимость. Предполагаемые услуги включают рекламу недвижимости, опрос арендаторов, организация просмотра сдаваемых в аренду объектов потенциальными арендаторами и составление договоров на аренду.</p>
-            </div>
-        </div>
+  <div class="jumbotron" style="margin-top: 100px">
+    <div class="container">
+      <h1>Rentals</h1>
+      <p>В этом учебном проекте описана работа компании, которая оказанием услуг в сфере недвижимости. Компания предлагает услуги владельцам, которые хотят
+        сдать в аренду свою недвижимость. Предполагаемые услуги включают рекламу недвижимости, опрос арендаторов, организация просмотра сдаваемых в аренду
+        объектов потенциальными арендаторами и составление договоров на аренду.</p>
+    </div>
+  </div>
 
-        <div class="container">
-            <!-- Example row of columns -->
+  <div class="container">
             <div class="row">
                 <div class="col-md-4">
-                    <h2>Heading</h2>
+                    <h2>Rentals</h2>
                     <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-                    <p><a class="btn btn-default" href="#" role="button">View details »</a></p>
+                    <p><a class="btn btn-default" href="/rentals/rental" role="button">View rentals »</a></p>
                 </div>
                 <div class="col-md-4">
                     <h2>Heading</h2>
@@ -36,6 +37,6 @@
             <footer>
                 <p>© Rentals 2014</p>
             </footer>
-        </div> <!-- /container -->
+        </div>
 	</body>
 </html>
