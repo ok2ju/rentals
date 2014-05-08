@@ -1,12 +1,18 @@
 package com.rentals
 
-class Rental {
+import com.rentals.users.landlord.Landlord;
 
+class Rental {
+    static belongsTo = [landlord: Landlord]
+    
+    String title
     Address address
     String type
     Integer rooms
-    Integer rent
+    Double rent
+    String description
 
     static constraints = {
+        landlord nullable:true
     }
 }

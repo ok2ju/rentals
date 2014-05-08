@@ -1,4 +1,5 @@
 grails.servlet.version = "3.0" // Change depending on target container compliance (2.5 or 3.0)
+grails.server.port.http = 8090
 grails.project.class.dir = "target/classes"
 grails.project.test.class.dir = "target/test-classes"
 grails.project.test.reports.dir = "target/test-reports"
@@ -65,9 +66,8 @@ grails.project.dependency.resolution = {
         runtime ":hibernate:3.6.10.13" // or ":hibernate4:4.3.5.1"
         runtime ":database-migration:1.4.0"
         runtime ":jquery:1.11.0.2"
-        //runtime ":resources:1.2.7"
-		compile ":asset-pipeline:1.8.3"
 		compile ':spring-security-core:2.0-RC2'
+        compile ":asset-pipeline:1.8.7"
         // Uncomment these (or add new ones) to enable additional resources capabilities
         //runtime ":zipped-resources:1.0.1"
         //runtime ":cached-resources:1.1"

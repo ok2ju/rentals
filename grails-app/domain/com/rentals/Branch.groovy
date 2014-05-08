@@ -6,7 +6,6 @@ class Branch {
     String tel_no
     String fax_no
 
-
     static constraints = {
     }
 }
