@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Rentals Add New</title>
+
+    <!-- My Styles -->
+    <link href="css/styles.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+        <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="#">Rentals</a>
+            </div>
+            <div class="collapse navbar-collapse">
+              <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+              </ul>
+            </div><!--/.nav-collapse -->
+          </div>
+        </div>
+
+        <div class="container add-rent">
+          <div class="row add-rent-row">
+            <div class="col-md-6">
+              <form class="form-signin add-rent-form" role="form">
+                  <h3>Add Rental</h3>
+                  <input type="text" class="form-control" placeholder="City...">
+                  <input type="text" class="form-control" placeholder="Street...">
+                  <input type="text" class="form-control" placeholder="Rooms...">
+                  <input type="text" class="form-control" placeholder="Rent...">
+                  <input type="text" class="form-control" placeholder="Post code...">
+                  <button class="btn btn-lg btn-primary btn-block" type="submit">Add One</button>
+              </form>
+            </div>
+            <div class="col-md-6">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="fileupload fileupload-new" data-provides="fileupload">
+                    <h3>Upload Main Photo</h3>
+                    <div class="fileupload-preview thumbnail" style="width: 265px; height: 150px;"></div>
+                    <div class="upload-menu">
+                      <span class="btn btn-default btn-file"><span class="fileupload-new">Select image</span><span class="fileupload-exists">Change</span><input type="file"></span>
+                      <a href="#" class="btn fileupload-exists" data-dismiss="fileupload">Remove</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="upload-menu secondary-upload-menu secondary-menu-one">
+                      <span class="btn btn-default btn-file"><span class="fileupload-new">Select secondary image #1</span><input type="file"></span>
+                      <a href="#" class="btn fileupload-exists" data-dismiss="fileupload">Remove</a>
+                    </div>
+                    <div class="upload-menu secondary-upload-menu">
+                      <span class="btn btn-default btn-file"><span class="fileupload-new">Select secondary image #2</span><input type="file"></span>
+                      <a href="#" class="btn fileupload-exists" data-dismiss="fileupload">Remove</a>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+          <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/openFileDialog.js"></script>
+
+</body>
+</html>
