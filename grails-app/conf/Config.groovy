@@ -10,7 +10,6 @@
 // if (System.properties["${appName}.config.location"]) {
 //    grails.config.locations << "file:" + System.properties["${appName}.config.location"]
 // }
-
 grails.project.groupId = appName // change this to alter the default package name and Maven publishing destination
 grails.app.context="/"
 // The ACCEPT header will not be used for content negotiation for user agents containing the following strings (defaults to the 4 major rendering engines)
@@ -99,10 +98,9 @@ environments {
     }
 }
 
-// log4j configuration
+
 log4j = {
-    // Example of changing the log pattern for the default console appender:
-    //
+	
     appenders {
         console name:'stdout', layout:pattern(conversionPattern: '%c{2} %m%n')
     }
@@ -117,7 +115,8 @@ log4j = {
            'org.codehaus.groovy.grails.orm.hibernate',      // hibernate integration
            'org.springframework',
            'org.hibernate',
-           'net.sf.ehcache.hibernate'
+           'net.sf.ehcache.hibernate',
+		   'com.rentals.RentalService'
 }
 
 

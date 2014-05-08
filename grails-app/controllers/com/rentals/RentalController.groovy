@@ -8,6 +8,7 @@ class RentalController {
         
     def index() {        
         rentalService.createRentalsList()
+        println("RentalController - index")
         [rentals: Rental.list()]
     }
     
