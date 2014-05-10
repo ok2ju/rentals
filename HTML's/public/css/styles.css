@@ -6133,6 +6133,13 @@ body {
 .navbar .container .navbar-collapse .name-block {
   line-height: 3.8;
 }
+.navbar .container .navbar-collapse .name-block .user-name .name-link {
+  color: #fff;
+}
+.navbar .container .navbar-collapse .name-block .user-name .user-menu li > a {
+  color: #000;
+  font-size: 12px;
+}
 .navbar .container .navbar-collapse .name-block li {
   font-size: 16px;
   color: #fff;
