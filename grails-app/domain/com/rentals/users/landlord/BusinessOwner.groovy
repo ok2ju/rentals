@@ -3,12 +3,14 @@ package com.rentals.users.landlord
 import com.rentals.Rental
 
 class BusinessOwner extends Landlord {
-
-	static hasMany = [rentals : Rental]
 	
     String bname
     String btype
 
+	def addToRentals(arg) {
+		super.addToRentals(arg)
+	}
+	
     static constraints = {
     }
 }

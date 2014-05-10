@@ -5,5 +5,4 @@ import grails.transaction.Transactional
 
 @Transactional
 class NavigationService {
-
 }

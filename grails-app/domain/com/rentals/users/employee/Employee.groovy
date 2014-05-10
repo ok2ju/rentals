@@ -1,9 +1,6 @@
 package com.rentals.users.employee
 
-import java.util.Date
-
-import com.rentals.users.Name;
-import com.rentals.users.User;
+import com.rentals.users.User
 
 class Employee extends User {
 

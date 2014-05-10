@@ -5,4 +5,6 @@ import com.rentals.users.User
 
 class Landlord extends User {
 	
+	static hasMany = [rentals : Rental]
+	
 }

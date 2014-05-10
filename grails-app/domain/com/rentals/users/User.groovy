@@ -1,13 +1,8 @@
 package com.rentals.users
 
-import com.rentals.Address
-
 class User {
 
     transient springSecurityService
-
-    Address address
-    String tel_no
 
     String username
     String password
@@ -15,13 +10,14 @@ class User {
     boolean accountExpired
     boolean accountLocked
     boolean passwordExpired
+	
+	String tel_no
 
     static transients = ['springSecurityService']
 
     static constraints = {
         username blank: false, unique: true
         password blank: false
-        address nullable : true
         tel_no nullable: true
     }
 

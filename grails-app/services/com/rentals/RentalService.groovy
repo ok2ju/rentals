@@ -12,11 +12,32 @@ class RentalService {
     
 	private static final Log log = LogFactory.getLog(RentalService.class)
 	
+	def save(Rental rentalInstance) {
+		if (rentalInstance == null) {
+			notFound()
+			return
+		}
+
+		if (rentalInstance.hasErrors()) {
+			respond(rentalInstance.errors, view:'create')
+			return
+		}
+
+		rentalInstance.save(flush:true)
+	}
+	
     def createRentalsList() {
         def po = createPO()
         Rental r1 = createRental()
         po.addToRentals(r1)
-        validate(po)
+		r1.landlord = po
+		po.save()
+		Rental r2 = new Rental(
+			title:'Rental2',
+			type:'Flat',
+			rooms:3,
+			rent:150,
+			description:'Very good deal').save(true)
     }
 	
 	def createPO() {
@@ -30,20 +51,12 @@ class RentalService {
 	}
 	
 	def createRental() {
-		def address = createAddress()
 		Rental r1 = new Rental(
 			title:'Rental1',
 			type:'Flat',
 			rooms:3,
 			rent:150,
-			description:'Very good deal',
-			address: address)
-		validate(r1)
-	}
-	
-	def createAddress() {
-		def address = new Address(street: 'STREET', area: 'AREA', city: 'CITY', postcode:'2131231')
-		validate(address)
+			description:'Very good deal')
 	}
 	
 	def validate(domain) {
@@ -53,7 +66,7 @@ class RentalService {
 			}
 			return null
 		} else {
-			return domain.save(true)
+			return domain
 		}
 	}
 }
