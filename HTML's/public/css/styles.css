@@ -6076,7 +6076,7 @@ button.close {
   width: 100px;
   display: block;
   margin: 0 auto;
-  padding-top: 150px;
+  padding-top: 135px;
 }
 .form-signin {
   max-width: 300px;
@@ -6097,8 +6097,15 @@ button.close {
   text-align: center;
   padding: 10px;
 }
+.form-signin .error-message {
+  display: block;
+  background-color: red;
+  padding: 4px;
+  color: #fff;
+  margin-top: -15px;
+}
 .reg-logo {
-  padding-top: 130px;
+  padding-top: 60px;
 }
 .add-rent .add-rent-row {
   margin-top: 61px;
