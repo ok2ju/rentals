@@ -1,4 +1,4 @@
-package com.rentals
+package com.rentals.users
 
 import grails.test.mixin.TestFor
 import spock.lang.Specification
@@ -6,8 +6,8 @@ import spock.lang.Specification
 /**
  * See the API for {@link grails.test.mixin.web.ControllerUnitTestMixin} for usage instructions
  */
-@TestFor(RedirectController)
-class RedirectControllerSpec extends Specification {
+@TestFor(EndUserController)
+class EndUserControllerSpec extends Specification {
 
     def setup() {
     }

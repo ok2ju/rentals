@@ -1,12 +1,17 @@
 package com.rentals.users
 
 import static org.springframework.http.HttpStatus.*
+import grails.plugin.springsecurity.annotation.Secured
 import grails.transaction.Transactional
 
 @Transactional(readOnly = true)
 class UserController {
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
+	@Secured('permitAll')
+	def register() {
+	}
+	
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         respond User.list(params), model:[userInstanceCount: User.count()]

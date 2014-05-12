@@ -1,65 +1,20 @@
 <%@ page import="com.rentals.Rental" %>
 
-<div class="fieldcontain ${hasErrors(bean: rentalInstance, field: 'depositeAmount', 'error')} required">
-	<label for="depositeAmount">
-		<g:message code="rental.depositeAmount.label" default="Deposite Amount" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:field name="depositeAmount" type="number" value="${rentalInstance.depositeAmount}" required=""/>
+<g:field name="title" type="text" value="${rentalInstance.title}" required="" class="form-control" placeholder="Title"/>
 
-</div>
+<g:field name="type" type="text" value="${rentalInstance.type}" required="" class="form-control" placeholder="Type"/>
 
-<div class="fieldcontain ${hasErrors(bean: rentalInstance, field: 'depositePaid', 'error')} ">
-	<label for="depositePaid">
-		<g:message code="rental.depositePaid.label" default="Deposite Paid" />
-		
-	</label>
-	<g:checkBox name="depositePaid" value="${rentalInstance?.depositePaid}" />
+<g:field name="rooms" type="number" value="${rentalInstance.rooms}" required="" class="form-control" placeholder="Rooms"/>
 
-</div>
+<g:field name="rent" type="number" value="${rentalInstance.rent}" required="" class="form-control" placeholder="Rent"/>
 
-<div class="fieldcontain ${hasErrors(bean: rentalInstance, field: 'duration', 'error')} required">
-	<label for="duration">
-		<g:message code="rental.duration.label" default="Duration" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:field name="duration" type="number" value="${rentalInstance.duration}" required=""/>
+<g:field name="description" type="text" value="${rentalInstance.description}" required="" class="form-control" placeholder="Description"/>
 
-</div>
+<g:field name="address.street" type="text" value="${rentalInstance?.address.street}" required="" class="form-control" placeholder="Street"/>
 
-<div class="fieldcontain ${hasErrors(bean: rentalInstance, field: 'paymentMethod', 'error')} required">
-	<label for="paymentMethod">
-		<g:message code="rental.paymentMethod.label" default="Payment Method" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:textField name="paymentMethod" required="" value="${rentalInstance?.paymentMethod}"/>
+<g:field name="address.area" type="text" value="${rentalInstance?.address.area}" required="" class="form-control" placeholder="Area"/>
 
-</div>
+<g:field name="address.city" type="text" value="${rentalInstance?.address.city}" required="" class="form-control" placeholder="City"/>
 
-<div class="fieldcontain ${hasErrors(bean: rentalInstance, field: 'rent', 'error')} required">
-	<label for="rent">
-		<g:message code="rental.rent.label" default="Rent" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:field name="rent" type="number" value="${rentalInstance.rent}" required=""/>
-
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: rentalInstance, field: 'rentFinish', 'error')} required">
-	<label for="rentFinish">
-		<g:message code="rental.rentFinish.label" default="Rent Finish" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:datePicker name="rentFinish" precision="day"  value="${rentalInstance?.rentFinish}"  />
-
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: rentalInstance, field: 'rentStart', 'error')} required">
-	<label for="rentStart">
-		<g:message code="rental.rentStart.label" default="Rent Start" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:datePicker name="rentStart" precision="day"  value="${rentalInstance?.rentStart}"  />
-
-</div>
+<g:field name="address.postcode" type="text" value="${rentalInstance?.address.postcode}" required="" class="form-control" placeholder="Postcode"/>
 

@@ -5,6 +5,8 @@ import com.rentals.users.User
 
 class PrivateOwner extends Landlord {
 	
+	final String ROLE = "PO"
+	
     String firstname
     String lastname
 	

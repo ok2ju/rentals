@@ -18,19 +18,19 @@
   <div class="container">
             <div class="row">
                 <div class="col-md-4">
-                    <h2>Rentals</h2>
+                    <h2>End user</h2>
                     <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-                    <p><a class="btn btn-default" href="<g:createLink controller="rental"/>" role="button">View rentals »</a></p>
+                    <p><a class="btn btn-default" href="<g:createLink controller='endUser' action='register'/>" role="button">Register as end user »</a></p>
                 </div>
                 <div class="col-md-4">
-                    <h2>Heading</h2>
+                    <h2>Private Owner</h2>
                     <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-                    <p><a class="btn btn-default" href="#" role="button">View details »</a></p>
+                    <p><a class="btn btn-default" href="<g:createLink controller='privateOwner' action='register'/>" role="button">Register as Private Owner »</a></p>
                 </div>
                 <div class="col-md-4">
-                    <h2>Heading</h2>
+                    <h2>Buisness Owner</h2>
                     <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-                    <p><a class="btn btn-default" href="#" role="button">View details »</a></p>
+                    <p><a class="btn btn-default" href="<g:createLink controller='buisnessOwner' action='register'/>" role="button">Register as Buisness Owner »</a></p>
                 </div>
             </div>
             <hr>

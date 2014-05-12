@@ -22,6 +22,7 @@
                 <p class="lead">
                     ${rental.description}
                 </p>
+                ${rental.address.street}
                 <div class="row">
                     <div class="col-xs-6 col-md-5">
                         <a

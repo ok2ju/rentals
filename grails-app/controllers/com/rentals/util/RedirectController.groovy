@@ -1,4 +1,4 @@
-package com.rentals
+package com.rentals.util
 import grails.plugin.springsecurity.SpringSecurityUtils
 import grails.plugin.springsecurity.SpringSecurityService
 class RedirectController {

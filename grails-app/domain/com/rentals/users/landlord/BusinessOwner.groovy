@@ -4,6 +4,8 @@ import com.rentals.Rental
 
 class BusinessOwner extends Landlord {
 	
+	final String ROLE = 'BO'
+	
     String bname
     String btype
 
