@@ -18,5 +18,6 @@
     <g:include controller="navigation" action="top"/>
     <g:layoutBody/>
     <asset:javascript src="bootstrap.js"/>
+    <asset:javascript src="openFileDialog.js"/>
 </body>
 </html>

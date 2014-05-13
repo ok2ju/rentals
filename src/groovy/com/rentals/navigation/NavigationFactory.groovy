@@ -6,11 +6,8 @@ import com.rentals.navigation.impl.LandLordNavigation
 
 class NavigationFactory {
 	
-	def getNavigation(authorities, g) {
+	def static AbstractNavigation getNavigation(role, g) {
 		def AbstractNavigation result
-		for(def role in roles) { 
-			authorities.add(role.getAuthority())
-		}
 		switch ( role ) {
 			case ["PO", "BO"]:
 				result = new LandLordNavigation(g: g)

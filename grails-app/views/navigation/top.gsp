@@ -35,13 +35,6 @@
 									</a>
                                 </li>
                             </g:each>
-                            <li class="divider"></li>
-                            <li>
-                                <a href="/j_spring_security_logout">
-                                	<i class="ace-icon fa fa-power-off"></i> 
-                                	Logout
-                               	</a>
-                            </li>
                         </ul>
                     </li>
                 </sec:ifLoggedIn>

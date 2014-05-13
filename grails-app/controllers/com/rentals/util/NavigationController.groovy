@@ -1,27 +1,14 @@
 package com.rentals.util
 
 import com.rentals.Link;
+import com.rentals.navigation.AbstractNavigation;
 
 class NavigationController {
     
+	def navigationService
+	
     def top() {
-        [links: topLinks(), actionList: actionList()] 
+		AbstractNavigation abstractNavigation = navigationService.getNavigation(g)
+        [links: abstractNavigation.getTopLinks(), actionList: abstractNavigation.getActions()] 
     }
-	
-	def topLinks() {
-		
-	}
-	
-	def actionList() {
-		def list = []
-		list.add(new Link(
-			title: 'Add rent',
-			path: g.createLink([controller:'rental', action:'create'])
-		))
-		list.add(new Link(
-			title: 'My rents',
-			path: g.createLink([controller:'landlord'])
-		))
-		list
-	}
 }

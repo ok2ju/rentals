@@ -1,12 +1,11 @@
-package com.rentals.users
+package com.rentals.users.landlord
 
 import grails.transaction.Transactional
 
 import org.apache.commons.logging.Log
 import org.apache.commons.logging.LogFactory
-import org.apache.ivy.core.module.descriptor.ExtendsDescriptor;
 
-import com.rentals.users.landlord.PrivateOwner;
+import com.rentals.users.AbstractUserService
 
 @Transactional
 class PrivateOwnerService extends AbstractUserService {

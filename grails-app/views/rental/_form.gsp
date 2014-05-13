@@ -1,10 +1,16 @@
 <%@ page import="com.rentals.Rental" %>
 
 <g:field name="title" type="text" value="${rentalInstance.title}" required="" class="form-control" placeholder="Title"/>
+<g:if test="${hasErrors(bean: rentalInstance, field: 'title', 'error')}">
+	<label class="error-message">Incorrect Name</label>
+</g:if>
 
 <g:field name="type" type="text" value="${rentalInstance.type}" required="" class="form-control" placeholder="Type"/>
 
 <g:field name="rooms" type="number" value="${rentalInstance.rooms}" required="" class="form-control" placeholder="Rooms"/>
+<g:if test="${hasErrors(bean: rentalInstance, field: 'rooms', 'error')}">
+	<label class="error-message">Incorrect rooms</label>
+</g:if>
 
 <g:field name="rent" type="number" value="${rentalInstance.rent}" required="" class="form-control" placeholder="Rent"/>
 

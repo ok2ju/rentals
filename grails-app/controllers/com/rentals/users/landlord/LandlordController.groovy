@@ -1,4 +1,4 @@
-package com.rentals.users
+package com.rentals.users.landlord
 
 import grails.plugin.springsecurity.annotation.Secured
 

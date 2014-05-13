@@ -8,40 +8,39 @@ import org.apache.commons.logging.LogFactory
 
 @Transactional(readOnly = true)
 class RentalController {
-	
+
 	private static final Log log = LogFactory.getLog(RentalController.class)
 	static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
-	
-    def rentalService
+
+	def rentalService
 	def landlordService
-    
+
 	@Secured('permitAll')
-    def index(Integer max) {
+	def index(Integer max) {
 		log.debug("index")
 		params.max = Math.min(max ?: 10, 100)
-        [rentals: Rental.list(params), count: Rental.count()]
-    }
-    
+		[rentals: Rental.list(params), count: Rental.count()]
+	}
+
 	@Secured('permitAll')
-    def show() {
-        [rental: Rental.get(params.id)]
-    }
-    
+	def show() {
+		[rental: Rental.get(params.id)]
+	}
+
 	@Secured('hasAnyRole("PO,BO")')
 	def create() {
 		[rentalInstance: new Rental()]
 	}
-	
+
 	@Secured('hasAnyRole("PO,BO")')
 	def edit() {
 		Rental rentalInstance = landlordService.get(params.id)
 		if(rentalInstance == null) {
-			println("persone not found")
-			redirect(controller:"landlord", action:"list")
+			redirect(uri:'/notFound')
 		}
 		[rentalInstance: rentalInstance]
 	}
-	
+
 	@Secured('hasAnyRole("PO,BO")')
 	def save(Rental rentalInstance) {
 		if (rentalInstance == null) {
@@ -53,9 +52,9 @@ class RentalController {
 		}
 		rentalService.save(rentalInstance)
 		
-		redirect(action: 'show', params: [id: rentalInstance.id])
+		render(view: "image", model: [id: rentalInstance.id])
 	}
-	
+
 	@Transactional
 	@Secured('hasAnyRole("PO,BO")')
 	def update(Rental rentalInstance) {
@@ -69,7 +68,7 @@ class RentalController {
 			return
 		}
 		rentalInstance.save(flush:true)
-		
+
 		redirect(action: 'show', params: [id: rentalInstance.id])
-	}    
+	}
 }

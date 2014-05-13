@@ -11,6 +11,8 @@ class EndUserController {
 	
 	private static final Log log = LogFactory.getLog(EndUserController.class)
 	
+	def endUserService
+	
 	@Secured('permitAll')
     def register() {
 		[userInstance: new EndUser()]
@@ -26,7 +28,9 @@ class EndUserController {
 			respond(userInstance.errors, view:'register')
 			return
 		}
-		userInstance.save(true)
+		
+		endUserService.save(userInstance)
+		
 		redirect(uri:'/')
 	}
 }

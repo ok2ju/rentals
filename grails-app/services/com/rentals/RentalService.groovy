@@ -21,4 +21,10 @@ class RentalService {
 		rentalInstance.save(flush:true)
 	}
 	
+	def addImage(Long rentalId, Image image) {
+		Rental rental = Rental.get(rentalId)
+		rental.addToImages(new Image(bytes: image.bytes, contentType: image.getContentType()))
+		rental.save()
+	}
+	
 }
