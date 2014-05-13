@@ -6110,9 +6110,6 @@ button.close {
 .add-rent .add-rent-row {
   margin-top: 61px;
 }
-.add-rent .add-rent-row .add-rent-form {
-  margin-top: 100px;
-}
 .add-rent .add-rent-row .add-rent-form .rental-more-info {
   height: 70px;
 }
@@ -6121,6 +6118,16 @@ button.close {
 }
 .add-rent .add-rent-row .secondary-menu-one {
   margin-top: 205px;
+}
+.not-found-message h1 {
+  font-size: 80px;
+  padding: 35px;
+}
+.text-muted {
+  font-size: 25px;
+}
+.promo-panel {
+  margin-top: 100px;
 }
 body {
   background-color: #fbfbfb;
