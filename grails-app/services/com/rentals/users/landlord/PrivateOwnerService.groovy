@@ -8,7 +8,7 @@ import org.apache.commons.logging.LogFactory
 import com.rentals.users.AbstractUserService
 
 @Transactional
-class PrivateOwnerService extends AbstractUserService {
+class PrivateOwnerService extends AbstractUserService<PrivateOwner> {
 	
 	private static final Log log = LogFactory.getLog(PrivateOwnerService.class)
 

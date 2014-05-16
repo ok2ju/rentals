@@ -5,16 +5,14 @@ import grails.plugin.springsecurity.annotation.Secured
 import org.apache.commons.logging.Log
 import org.apache.commons.logging.LogFactory
 
-import com.rentals.Rental
-
 @Secured("hasAnyRole('PO','BO')")
-class LandlordController {
+class OwnerController {
 	
-	private static final Log log = LogFactory.getLog(LandlordController.class)
+	private static final Log log = LogFactory.getLog(OwnerController.class)
 	
-    def landlordService 	
+    def ownerService 	
 	
     def index() {
-        [rentals: landlordService.list()]
+        [rentals: ownerService.list()]
     }
 }

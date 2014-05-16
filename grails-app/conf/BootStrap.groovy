@@ -1,19 +1,44 @@
-import com.rentals.users.Role
-import com.rentals.users.User
-import com.rentals.users.UserRole
+import java.util.regex.Pattern.Branch
+
+import com.rentals.Address
+import com.rentals.Branch
+import com.rentals.users.employee.Manager
 import com.rentals.users.landlord.PrivateOwner
+
 
 class BootStrap {
 
-    def init = { servletContext ->
-        User user = new User(username:"admin", password: "admin").save(true)
-        Role roleAdmin = new Role(authority: "ADMIN").save(true)
-        UserRole.create(user, roleAdmin)
+	def managerService
+	def privateOwnerService
+	
+	def init = { servletContext ->
+
+		PrivateOwner po = new PrivateOwner(firstname:"firstname", lastname:"lastname", username:"privateowner", password:"privateowner")
+		privateOwnerService.save(po)
+
+		Manager manager = new Manager(
+			firstname: 'Oleg', 
+			lastname: 'Atsman', 
+			sex: 'man', 
+			position: 'manager', 
+			dob: new Date(), 
+			username:'manager',
+			password:'manager'
+		);
+		managerService.save(manager)
 		
-		PrivateOwner po = new PrivateOwner(firstname:"firstname", lastname:"lastname", username:"privateowner", password:"privateowner").save(true)
-		Role rolePO = new Role(authority: "PO").save(true)
-		UserRole.create(po, rolePO)		
-    }
-    def destroy = {
-    }
+		Branch branch = new Branch(
+			tel_no: 'tel_no',
+			fax_no: 'fax_no',
+			address: new Address(
+				street: 'street',
+				area: 'area',
+				city: 'city',
+				postcode: 'postcode'
+			),
+			manager: manager
+		).save(true)
+	}
+	def destroy = {
+	}
 }

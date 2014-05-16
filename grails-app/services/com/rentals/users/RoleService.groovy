@@ -1,6 +1,5 @@
 package com.rentals.users
 
-
 import grails.transaction.Transactional
 import org.apache.commons.logging.Log
 import org.apache.commons.logging.LogFactory
@@ -12,7 +11,7 @@ class RoleService {
 	
     def get(String authority) {
 		def role = Role.where({authority == authority}).find()
-		if(!role) { role = new Role(authority).save(true) }
+		if(!role) { role = new Role(authority:authority).save(true) }
 		role
 	}
 }

@@ -14,7 +14,7 @@ class LandLordNavigation extends AbstractNavigation {
 		))
 		links.add(new Link(
 			title: 'My Rentals',
-			path: g.createLink(controller:'landlord')
+			path: g.createLink(controller:'owner')
 		))
 		links.add(new Link(
 			title: 'About',
@@ -42,7 +42,7 @@ class LandLordNavigation extends AbstractNavigation {
 		))
 		list.add(new Link(
 			title: 'My rents',
-			path: g.createLink([controller:'landlord'])
+			path: g.createLink([controller:'owner'])
 		))
 		list.add(new Link(
 			title: 'Logout',

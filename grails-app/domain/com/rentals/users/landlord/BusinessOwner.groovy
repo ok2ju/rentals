@@ -2,7 +2,7 @@ package com.rentals.users.landlord
 
 import com.rentals.Rental
 
-class BusinessOwner extends Landlord {
+class BusinessOwner extends Owner {
 	
 	final String ROLE = 'BO'
 	

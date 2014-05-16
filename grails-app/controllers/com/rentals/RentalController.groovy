@@ -13,7 +13,7 @@ class RentalController {
 	static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
 	def rentalService
-	def landlordService
+	def ownerService
 
 	@Secured('permitAll')
 	def index(Integer max) {

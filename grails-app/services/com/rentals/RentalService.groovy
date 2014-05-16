@@ -5,19 +5,19 @@ import grails.transaction.Transactional
 import org.apache.commons.logging.Log
 import org.apache.commons.logging.LogFactory
 
-import com.rentals.users.landlord.Landlord
+import com.rentals.users.landlord.Owner
 
 @Transactional
 class RentalService {
     
 	private static final Log log = LogFactory.getLog(RentalService.class)
 	
-	def springSecurityService
+	def ownerService
 	
 	def save(Rental rentalInstance) {		
-		Landlord landlord = Landlord.get(springSecurityService.principal.id)
-		landlord.addToRentals(rentalInstance)
-		landlord.save(flush:true)
+		Owner owner = ownerService.getCurrentUser()
+		owner.addToRentals(rentalInstance)
+		owner.save(flush:true)
 		rentalInstance.save(flush:true)
 	}
 	
