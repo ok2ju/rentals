@@ -6,6 +6,7 @@ import com.rentals.users.employee.Employee;
 import com.rentals.users.employee.Manager
 import com.rentals.users.employee.Staff
 import com.rentals.users.landlord.PrivateOwner
+import com.rentals.users.EndUser
 
 
 class BootStrap {
@@ -13,6 +14,7 @@ class BootStrap {
 	def managerService
 	def privateOwnerService
 	def staffService
+	def endUserService
 	
 	def init = { servletContext ->
 
@@ -45,7 +47,7 @@ class BootStrap {
 				postcode: 'postcode'
 			),
 			manager: manager
-		).save(true)
+		).save()
 		
 		Staff employee = new Staff(
 			username: 'employee',
@@ -59,9 +61,18 @@ class BootStrap {
 		)
 		
 		staffService.save(employee)
-		
 		branch.addToEmployees(employee)
 		branch.save()
+
+		EndUser endUser = new EndUser(
+			username: 'end-user',
+			password: 'end-user',
+			firstname: 'end-user',
+			lastname: 'end-user',
+			prefType: 'f',
+			maxRent: 1000.0
+		)
+		endUserService.save(endUser)
 	}
 	def destroy = {
 	}

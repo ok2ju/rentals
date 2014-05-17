@@ -9,12 +9,12 @@ import org.apache.commons.logging.LogFactory
 import com.rentals.users.UserRole
 
 @Transactional
-class AbstractUserService<T> {
+class AbstractUserService<T extends User> {
 	
 	private static final Log log = LogFactory.getLog(AbstractUserService.class)
 	
 	def roleService
-	def SpringSecurityService springSecurityService
+	SpringSecurityService springSecurityService
 	
 	@Transactional
     def save(userInstance) {
@@ -22,7 +22,7 @@ class AbstractUserService<T> {
 			log.error("AbstractUserService<$T> - save userInstance is null")
 		}
 		if(userInstance.validate()) {
-			userInstance.save(true)
+			userInstance.save()
 			Role role = roleService.get(userInstance.ROLE)
 			UserRole.create(userInstance, role)
 			return userInstance
@@ -34,7 +34,15 @@ class AbstractUserService<T> {
 		}
     }
 	
+    def getCurrentId() {
+    	springSecurityService.principal.id
+    }
+
 	def getCurrentUser() {
-		T.get(springSecurityService.principal.id)
+		def currentUser = T.get(springSecurityService.principal.id)
+		if(currentUser == null) {
+			log.error("AbstractUserService<$T> - getCurrentUser currentUser is null, id: $springSecurityService.principal.id")
+		}
+		currentUser
 	}
 }

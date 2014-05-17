@@ -17,7 +17,7 @@ class Staff extends Employee {
 	
 	static hasMany = [
 		rentals : Rental,
-		leaseAgreement: LeaseAgreement
+		leaseAgreements: LeaseAgreement
 	]
 	
 	static belongsTo = [
@@ -27,7 +27,7 @@ class Staff extends Employee {
 	
     static constraints = {
 		rentals nullable: true
-		leaseAgreement nullable: true
+		leaseAgreements nullable: true
 		secretary nullable: true
 		supervisor nullable: true
     }

@@ -1,10 +1,10 @@
 <html>
 <head>
-	<meta name='layout' content='main'/>
+	<meta name='layout' content='register'/>
 	<title>Opps, 404!</title>
 </head>
-<body style="padding-top: 100px;">
-    <div class="container">
+<body>
+    <div class="container" style="padding-top: 100px;">
       <div class="col-lg-8 col-lg-offset-2 text-center">
         <div class="not-found-message">
           <h1>OPPS, Error 404!</h1>

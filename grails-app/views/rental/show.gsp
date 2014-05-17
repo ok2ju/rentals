@@ -9,7 +9,13 @@
     <div class="container more-info">
         <div class="row featurette">
             <div class="col-md-5">
-                <img class="featurette-image img-responsive" data-src="holder.js/500x500/auto" alt="500x500" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MDAiIGhlaWdodD0iNTAwIj48cmVjdCB3aWR0aD0iNTAwIiBoZWlnaHQ9IjUwMCIgZmlsbD0iI2VlZSI+PC9yZWN0Pjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjI1MCIgeT0iMjUwIiBzdHlsZT0iZmlsbDojYWFhO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1zaXplOjMxcHg7Zm9udC1mYW1pbHk6QXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWY7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+NTAweDUwMDwvdGV4dD48L3N2Zz4=">
+                <g:if test="${rental.images[0] != null}">
+                    <img class="featurette-image img-responsive" data-src="holder.js/500x500/auto" alt="500x500" 
+                            src="<g:createLink controller='image' action='show' params='[id: rental.images[0].id]'/>">
+                </g:if>
+                <g:else>
+                    <img data-src="holder.js/300x200" alt="300x200" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMjAwIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI2VlZSI+PC9yZWN0Pjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjE1MCIgeT0iMTAwIiBzdHlsZT0iZmlsbDojYWFhO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1zaXplOjE5cHg7Zm9udC1mYW1pbHk6QXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWY7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+MzAweDIwMDwvdGV4dD48L3N2Zz4=" style="width: 300px; height: 200px;">
+                </g:else>
             </div>
             <div class="col-md-7">
                 <h2 class="featurette-heading">
@@ -20,10 +26,12 @@
                 </p>
                 ${rental.address.street}
                 <div class="row">
-                    <g:each in="${rental.images}" var="image">
-                        <div class="col-xs-6 col-md-5">
-                            <img alt="" src="<g:createLink controller='image' action='show' params='[id: image.id]'/>" />
-                        </div>
+                    <g:each var="i" in="${ (1..<rental.images.size())}">
+                        <g:if test="${rental.images[i]}">
+                            <div class="col-xs-6 col-md-5">
+                                <img src="<g:createLink controller='image' action='show' params='[id: rental.images[i].id]'/>" />
+                            </div>
+                        </g:if>
                     </g:each>
                 </div>
                 <div class="row order-buttons">

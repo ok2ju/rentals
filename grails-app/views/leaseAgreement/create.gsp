@@ -1,38 +1,38 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta name="layout" content="main">
-		<g:set var="entityName" value="${message(code: 'leaseAgreement.label', default: 'LeaseAgreement')}" />
-		<title><g:message code="default.create.label" args="[entityName]" /></title>
-	</head>
-	<body>
-		<a href="#create-leaseAgreement" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-		<div class="nav" role="navigation">
-			<ul>
-				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-				<li><g:link class="list" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
-			</ul>
-		</div>
-		<div id="create-leaseAgreement" class="content scaffold-create" role="main">
-			<h1><g:message code="default.create.label" args="[entityName]" /></h1>
-			<g:if test="${flash.message}">
-			<div class="message" role="status">${flash.message}</div>
-			</g:if>
-			<g:hasErrors bean="${leaseAgreementInstance}">
-			<ul class="errors" role="alert">
-				<g:eachError bean="${leaseAgreementInstance}" var="error">
-				<li <g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message error="${error}"/></li>
-				</g:eachError>
-			</ul>
-			</g:hasErrors>
-			<g:form url="[resource:leaseAgreementInstance, action:'save']" >
-				<fieldset class="form">
-					<g:render template="form"/>
-				</fieldset>
-				<fieldset class="buttons">
-					<g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />
-				</fieldset>
-			</g:form>
-		</div>
-	</body>
+
+<head>
+    <meta name="layout" content="main" />
+</head>
+
+<body>
+    <div class="container add-rent">
+        <div class="row add-rent-row">
+            <div class="col-md-6">
+                <g:if test="${flash.message}">
+                    <div class="message" role="status">${flash.message}</div>
+                </g:if>
+                <g:hasErrors bean="${leaseAgreementInstance}">
+                    <ul class="errors" role="alert">
+                        <g:eachError bean="${leaseAgreementInstance}" var="error">
+                            <li <g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>>
+                                <g:message error="${error}" />
+                            </li>
+                        </g:eachError>
+                    </ul>
+                </g:hasErrors>
+                <g:form url="[resource:leaseAgreement, action:'save']" class="form-signin add-rent-form" role="form">
+                    <h3>Create leaseAgreement</h3>
+                    <fieldset class="form">
+                        <g:render template="form" />
+                    </fieldset>
+                    <fieldset class="buttons">
+                        <g:submitButton name="create" class="btn btn-lg btn-primary btn-block" value="Create" />
+                    </fieldset>
+                </g:form>
+            </div>
+        </div>
+    </div>
+</body>
+
 </html>

@@ -13,6 +13,10 @@ class PrivateOwner extends Owner {
 	def addToRentals(arg) {
 		super.addToRentals(arg)
 	}
+
+	def addToLeaseAgreements(arg) {
+		super.addToLeaseAgreements(arg)
+	}
 	
 	static constraints = {
 		firstname blank: false

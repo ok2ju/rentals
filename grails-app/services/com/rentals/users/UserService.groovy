@@ -10,7 +10,5 @@ class UserService extends AbstractUserService<User> {
 	
 	private static final Log log = LogFactory.getLog(UserService.class)
 	
-    def serviceMethod() {
-
-    }
+		
 }

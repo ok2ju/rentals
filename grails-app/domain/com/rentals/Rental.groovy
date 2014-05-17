@@ -11,7 +11,8 @@ class Rental {
 	Double rent = 600.00
 	String description
 	Address address = new Address()
-
+	
+	
 	static embedded = ['address']
 
 	static belongsTo = [
@@ -21,9 +22,9 @@ class Rental {
 	]
 
 	static hasMany = [
-		leaseAgreements: LeaseAgreement,
 		images: Image,
-		views: View
+		views: View,
+		leaseAgreements: LeaseAgreement
 	]
 
 	static constraints = {
@@ -33,6 +34,6 @@ class Rental {
 		owner nullable: true
 		images nullable: true
 		staff nullable: true
-		branch nullable: true
+		leaseAgreements nullable: true
 	}
 }

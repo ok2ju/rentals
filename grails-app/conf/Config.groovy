@@ -105,6 +105,8 @@ log4j = {
         console name:'stdout', layout:pattern(conversionPattern: '%c{2} %m%n')
     }
 
+    info 'com.rentals'
+
 	  debug 'com.rentals'
 	
     error  'org.codehaus.groovy.grails.web.servlet',        // controllers
@@ -117,10 +119,7 @@ log4j = {
            'org.codehaus.groovy.grails.orm.hibernate',      // hibernate integration
            'org.springframework',
            'org.hibernate',
-           'net.sf.ehcache.hibernate',
-		   
-		   'com.rentals.users.AbstractUserService',
-		   'com.rentals.RentalService'
+           'net.sf.ehcache.hibernate'
 }
 
 

@@ -4,6 +4,7 @@ import com.rentals.navigation.impl.DefaultNavigation
 import com.rentals.navigation.impl.EndUserNavigation
 import com.rentals.navigation.impl.LandLordNavigation
 import com.rentals.navigation.impl.ManagerNavigation
+import com.rentals.navigation.impl.StaffNavigation
 
 class NavigationFactory {
 	
@@ -18,6 +19,9 @@ class NavigationFactory {
 				break
 			case ["MA"]:
 				result = new ManagerNavigation(g: g)
+				break
+			case ["ST"]:
+				result = new StaffNavigation(g: g)
 				break
 			default:
 				result = new DefaultNavigation(g: g)
