@@ -6129,6 +6129,12 @@ button.close {
 .promo-panel {
   margin-top: 100px;
 }
+.user-profile-container {
+  padding-top: 120px;
+}
+.user-profile-container .well {
+  min-height: 330px;
+}
 body {
   background-color: #fbfbfb;
 }
