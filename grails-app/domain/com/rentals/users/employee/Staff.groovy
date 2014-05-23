@@ -21,9 +21,14 @@ class Staff extends Employee {
 	]
 	
 	static belongsTo = [
-		supervisor: Supervisor
+		supervisor: Supervisor,
+		secretary: Secretary
 	]
 	
     static constraints = {
+		rentals nullable: true
+		leaseAgreement nullable: true
+		secretary nullable: true
+		supervisor nullable: true
     }
 }

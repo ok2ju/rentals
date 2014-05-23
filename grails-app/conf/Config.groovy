@@ -118,6 +118,8 @@ log4j = {
            'org.springframework',
            'org.hibernate',
            'net.sf.ehcache.hibernate',
+		   
+		   'com.rentals.users.AbstractUserService',
 		   'com.rentals.RentalService'
 }
 
@@ -128,6 +130,7 @@ grails.plugin.springsecurity.userLookup.userDomainClassName = 'com.rentals.users
 grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'com.rentals.users.UserRole'
 grails.plugin.springsecurity.authority.className = 'com.rentals.users.Role'
 grails.plugin.springsecurity.controllerAnnotations.staticRules = [
+	'/dbconsole/**':			      ['permitAll'],						
 	'/assets/**':					  ['permitAll'],
 	'/':                              ['permitAll'],
 	'/index':                         ['permitAll'],

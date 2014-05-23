@@ -9,6 +9,6 @@ class NavigationController {
 	
     def top() {
 		AbstractNavigation abstractNavigation = navigationService.getNavigation(g)
-        [links: abstractNavigation.getTopLinks(), actionList: abstractNavigation.getActions()] 
+        [links: abstractNavigation.getTopLinks(request.forwardURI), actionList: abstractNavigation.getActions()] 
     }
 }

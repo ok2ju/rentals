@@ -23,6 +23,8 @@ class Branch {
 	static embedded = ['address']
 
 	static constraints = {
+		tel_no maxSize: 13
+		fax_no maxSize: 13
 		employees nullable: true
 		rentals nullable: true
 	}

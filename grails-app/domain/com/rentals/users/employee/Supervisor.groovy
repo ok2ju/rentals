@@ -9,4 +9,5 @@ class Supervisor extends Employee {
 	final String ROLE = "SU"
 	
 	static hasMany = [staff: Staff]
+	
 }

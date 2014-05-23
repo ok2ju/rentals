@@ -1,6 +1,6 @@
 package com.rentals.users.landlord
 
-import com.rentals.Rental
+import com.rentals.Address
 
 class BusinessOwner extends Owner {
 	
@@ -8,7 +8,8 @@ class BusinessOwner extends Owner {
 	
     String bname
     String btype
-
+	String contactName
+	
 	def addToRentals(arg) {
 		super.addToRentals(arg)
 	}

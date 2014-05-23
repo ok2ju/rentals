@@ -12,6 +12,7 @@ class User {
     boolean passwordExpired
 	
 	String tel_no
+	String address
 
     static transients = ['springSecurityService']
 
@@ -19,6 +20,7 @@ class User {
         username blank: false, unique: true
         password blank: false
         tel_no nullable: true
+		address nullable: true, maxSize: 50
     }
 
     static mapping = { password column: '`password`' }

@@ -13,20 +13,26 @@ class Rental {
 	Address address = new Address()
 
 	static embedded = ['address']
-	
+
 	static belongsTo = [
-		landlord: Owner, 
-		branch: Branch, 
+		landlord: Owner,
+		branch: Branch,
 		staff: Staff
 	]
-	
-	static hasMany = [images: Image]
+
+	static hasMany = [
+		leaseAgreements: LeaseAgreement,
+		images: Image,
+		views: View
+	]
 
 	static constraints = {
-		rooms range : 1..15
-		rent range : 0.00..9999.00
-		landlord nullable : true
+		rooms range: 1..15, nullable: true
+		rent range: 0.00..9999.00, nullable: true
+		type maxSize: 1
+		landlord nullable: true
 		images nullable: true
 		staff nullable: true
+		branch nullable: true
 	}
 }

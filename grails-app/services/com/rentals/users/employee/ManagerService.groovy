@@ -13,11 +13,4 @@ class ManagerService extends AbstractUserService<Manager> {
 	
 	private static final Log log = LogFactory.getLog(ManagerService.class)
 	
-    def serviceMethod() {
-
-    }
-	
-	def currentUser() {
-	
-	}
 }

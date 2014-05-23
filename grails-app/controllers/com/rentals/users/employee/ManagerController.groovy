@@ -12,7 +12,11 @@ class ManagerController {
 	
 	private static final Log log = LogFactory.getLog(ManagerController.class)
 	
+	def managerService
+	
+	@Transactional
     def index() {
-		
+		Manager manager = managerService.getCurrentUser()
+		[manager]
 	}
 }

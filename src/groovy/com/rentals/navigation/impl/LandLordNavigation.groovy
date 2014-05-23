@@ -25,12 +25,7 @@ class LandLordNavigation extends AbstractNavigation {
 			path: g.createLink(uri:'/contact')
 		))
 		
-		links.each() {
-			if(it.path.equals(forwardURI)) {
-				it.active = true
-			}
-		}
-		links
+		checkActive(links, forwardURI)
 	}
 
 	@Override
