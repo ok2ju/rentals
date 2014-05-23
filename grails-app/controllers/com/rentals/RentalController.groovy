@@ -10,6 +10,7 @@ import org.apache.commons.logging.LogFactory
 class RentalController {
 
 	private static final Log log = LogFactory.getLog(RentalController.class)
+
 	static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
 	def rentalService
@@ -20,6 +21,10 @@ class RentalController {
 		log.debug("index")
 		params.max = Math.min(max ?: 10, 100)
 		[rentals: Rental.list(params), count: Rental.count()]
+	}
+
+	def branchList() {
+		[rentals: rentalService.getBranchRentalList(params.branchId)] 
 	}
 
 	@Secured('permitAll')
@@ -34,7 +39,7 @@ class RentalController {
 
 	@Secured('hasAnyRole("PO,BO")')
 	def edit() {
-		Rental rentalInstance = landlordService.get(params.id)
+		Rental rentalInstance = Rental.get(params.id)
 		if(rentalInstance == null) {
 			redirect(uri:'/notFound')
 		}
@@ -55,8 +60,8 @@ class RentalController {
 		render(view: "image", model: [id: rentalInstance.id])
 	}
 
-	@Transactional
 	@Secured('hasAnyRole("PO,BO")')
+	@Transactional
 	def update(Rental rentalInstance) {
 		if (rentalInstance == null) {
 			log.debug("update rentalInstance - null")
@@ -67,6 +72,7 @@ class RentalController {
 			respond rentalInstance.errors, view:'edit'
 			return
 		}
+		
 		rentalInstance.save(flush:true)
 
 		redirect(action: 'show', params: [id: rentalInstance.id])

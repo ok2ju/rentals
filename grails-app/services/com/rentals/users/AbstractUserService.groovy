@@ -18,15 +18,18 @@ class AbstractUserService<T> {
 	
 	@Transactional
     def save(userInstance) {
+    	if(userInstance == null) {
+			log.error("AbstractUserService<$T> - save userInstance is null")
+		}
 		if(userInstance.validate()) {
 			userInstance.save(true)
 			Role role = roleService.get(userInstance.ROLE)
 			UserRole.create(userInstance, role)
 			return userInstance
 		} else {
-			log.error('User is not valid')
+			log.error('AbstractUserService<$T> - save userInstance is not valid')
 			userInstance.errors.allErrors.each {
-				log.error(it)
+				log.error("it \n")
 			}
 		}
     }

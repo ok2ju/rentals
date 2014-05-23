@@ -6,9 +6,9 @@ abstract class AbstractNavigation {
 	
 	def g
 	
-	def abstract getTopLinks(String forwardURI)
+	abstract getTopLinks(String forwardURI)
 	
-	def abstract getActions()
+	abstract getActions()
 	
 	protected checkActive(links, String forwardURI) {
 		links.each() {

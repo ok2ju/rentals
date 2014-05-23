@@ -20,6 +20,7 @@ class NavigationService {
     def AbstractNavigation getNavigation(g) {
 		def roles = springSecurityService.getPrincipal().getAuthorities()
 		def role = roles[0]
+		log.debug("Create navigation for $role")
 		NavigationFactory.getNavigation(role.authority, g)
 	}
 	

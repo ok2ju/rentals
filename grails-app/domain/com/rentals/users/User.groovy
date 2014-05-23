@@ -1,5 +1,7 @@
 package com.rentals.users
 
+import com.rentals.Image
+
 class User {
 
     transient springSecurityService
@@ -14,6 +16,8 @@ class User {
 	String tel_no
 	String address
 
+    Image image
+
     static transients = ['springSecurityService']
 
     static constraints = {
@@ -21,6 +25,7 @@ class User {
         password blank: false
         tel_no nullable: true
 		address nullable: true, maxSize: 50
+        image nullable: true
     }
 
     static mapping = { password column: '`password`' }

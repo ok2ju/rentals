@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta name="layout" content="main"/>
-		<title>Rentals</title>
-	</head>
-	<body>
+    <head>
+        <meta name="layout" content="main"/>
+        <title>Rentals</title>
+    </head>
+    <body>
         <!-- Main jumbotron for a primary marketing message or call to action -->
-  <div class="jumbotron" style="margin-top: 100px">
-    <div class="container">
-      <h1>Rentals</h1>
-      <p>В этом учебном проекте описана работа компании, которая оказанием услуг в сфере недвижимости. Компания предлагает услуги владельцам, которые хотят
-        сдать в аренду свою недвижимость. Предполагаемые услуги включают рекламу недвижимости, опрос арендаторов, организация просмотра сдаваемых в аренду
-        объектов потенциальными арендаторами и составление договоров на аренду.</p>
-    </div>
-  </div>
-
-  <div class="container">
+        <div class="jumbotron" style="margin-top: 100px">
+            <div class="container">
+                <h1>Rentals</h1>
+                <p>В этом учебном проекте описана работа компании, которая оказанием услуг в сфере недвижимости. Компания предлагает услуги владельцам, которые хотят
+                сдать в аренду свою недвижимость. Предполагаемые услуги включают рекламу недвижимости, опрос арендаторов, организация просмотра сдаваемых в аренду
+                объектов потенциальными арендаторами и составление договоров на аренду.</p>
+            </div>
+        </div>
+        <div class="container">
             <div class="row">
                 <div class="col-md-4">
                     <h2>End user</h2>
@@ -38,5 +37,5 @@
                 <p>© Rentals 2014</p>
             </footer>
         </div>
-	</body>
+    </body>
 </html>

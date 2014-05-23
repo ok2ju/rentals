@@ -13,12 +13,31 @@ class RentalService {
 	private static final Log log = LogFactory.getLog(RentalService.class)
 	
 	def ownerService
-	
-	def save(Rental rentalInstance) {		
+	def springSecurityService
+
+	def get(id) {
+		Rental.where({owner.id == springSecurityService.principal.id && id == id}).find()
+	}
+
+	def getBranchRentalList(branchId) {
+		Rental.where({branch.id == branchId}).find()
+	}
+
+	def save(Rental rentalInstance) {
+		if(rentalInstance == null) {
+			log.error("RentalService - save rentalInstance is null")
+		}
+		if(!rentalInstance.validate()) {
+			log.error("RentalService - save rentalInstance is not valid")
+			userInstance.errors.allErrors.each {
+				log.error("$it \n")
+			}
+			return rentalInstance;
+		}
 		Owner owner = ownerService.getCurrentUser()
 		owner.addToRentals(rentalInstance)
-		owner.save(flush:true)
-		rentalInstance.save(flush:true)
+		owner.save()
+		rentalInstance.save()
 	}
 	
 	def addImage(Long rentalId, Image image) {

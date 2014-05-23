@@ -18,10 +18,6 @@ class OwnerService extends AbstractUserService<Owner> {
 		getCurrentUser().rentals
     }
 	
-	def get(id) {
-		Rental.where({landlord.id == springSecurityService.principal.id && id == id}).find()
-	}
-	
 	def getCurrentUser() {
 		return Owner.get(springSecurityService.principal.id)
 	}

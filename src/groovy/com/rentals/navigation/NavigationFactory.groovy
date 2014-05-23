@@ -15,11 +15,15 @@ class NavigationFactory {
 				break
 			case ["EU"]:
 				result = new EndUserNavigation(g: g)
+				break
 			case ["MA"]:
 				result = new ManagerNavigation(g: g)
+				break
 			default:
 				result = new DefaultNavigation(g: g)
+				break
 		}
+		result
 	}
 	
 }

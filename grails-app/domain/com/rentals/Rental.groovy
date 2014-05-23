@@ -15,7 +15,7 @@ class Rental {
 	static embedded = ['address']
 
 	static belongsTo = [
-		landlord: Owner,
+		owner: Owner,
 		branch: Branch,
 		staff: Staff
 	]
@@ -30,7 +30,7 @@ class Rental {
 		rooms range: 1..15, nullable: true
 		rent range: 0.00..9999.00, nullable: true
 		type maxSize: 1
-		landlord nullable: true
+		owner nullable: true
 		images nullable: true
 		staff nullable: true
 		branch nullable: true
