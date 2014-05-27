@@ -6116,6 +6116,10 @@ button.close {
 .add-rent .add-rent-row .fileupload {
   margin-top: 175px;
 }
+.add-rent .add-rent-row .fileupload .fileupload-preview {
+  width: 100%;
+  height: auto;
+}
 .add-rent .add-rent-row .secondary-menu-one {
   margin-top: 205px;
 }
@@ -6125,6 +6129,9 @@ button.close {
 }
 .text-muted {
   font-size: 25px;
+}
+.error-container {
+  padding-top: 100px;
 }
 .promo-panel {
   margin-top: 100px;
