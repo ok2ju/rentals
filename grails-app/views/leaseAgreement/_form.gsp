@@ -1,65 +1,58 @@
-<%@ page import="com.rentals.LeaseAgreement" %>
-
-<div class="fieldcontain ${hasErrors(bean: leaseAgreementInstance, field: 'depositeAmount', 'error')} required">
-	<label for="depositeAmount">
-		<g:message code="leaseAgreement.depositeAmount.label" default="Deposite Amount" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:field name="depositeAmount" type="number" value="${leaseAgreementInstance.depositeAmount}" required=""/>
-
+<div class="form-group">
+	<label>Rent:</label>
+	<g:field name="rent" type="number" value="${rental.rent}" required="" class="form-control" placeholder="Rent"/>
+	<g:if test="${hasErrors(bean: leaseAgreementInstance, field: 'rent', 'error')}">
+		<label class="error-message">${leaseAgreementInstance.error.getFieldError('rent')}</label>
+	</g:if>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: leaseAgreementInstance, field: 'depositePaid', 'error')} ">
-	<label for="depositePaid">
-		<g:message code="leaseAgreement.depositePaid.label" default="Deposite Paid" />
-		
-	</label>
-	<g:checkBox name="depositePaid" value="${leaseAgreementInstance?.depositePaid}" />
-
+<div class="form-group">
+	<label>Payment method:</label>
+	<g:field name="paymentMethod" type="text" value="${leaseAgreementInstance.paymentMethod}" required="" class="form-control" placeholder="Payment method"/>
+	<g:if test="${hasErrors(bean: leaseAgreementInstance, field: 'paymentMethod', 'error')}">
+		<label class="error-message">${leaseAgreementInstance.error.getFieldError('paymentMethod')}</label>
+	</g:if>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: leaseAgreementInstance, field: 'duration', 'error')} required">
-	<label for="duration">
-		<g:message code="leaseAgreement.duration.label" default="Duration" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:field name="duration" type="number" value="${leaseAgreementInstance.duration}" required=""/>
-
+<div class="form-group">
+	<label>Deposite amount:</label>
+	<g:field name="depositeAmount" type="number" value="${leaseAgreementInstance.depositeAmount}" required="" class="form-control" placeholder="Deposite amount"/>
+	<g:if test="${hasErrors(bean: leaseAgreementInstance, field: 'depositeAmount', 'error')}">
+		<label class="error-message">${leaseAgreementInstance.error.getFieldError('depositeAmount')}</label>
+	</g:if>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: leaseAgreementInstance, field: 'paymentMethod', 'error')} required">
-	<label for="paymentMethod">
-		<g:message code="leaseAgreement.paymentMethod.label" default="Payment Method" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:textField name="paymentMethod" required="" value="${leaseAgreementInstance?.paymentMethod}"/>
-
+<div class="form-group">
+	<label>Deposite paid:</label>
+	<g:checkBox name="depositePaid" value="${leaseAgreementInstance.depositePaid}" class="checkbox"/>
+	<g:if test="${hasErrors(bean: leaseAgreementInstance, field: 'depositePaid', 'error')}">
+		<label class="error-message">${leaseAgreementInstance.error.getFieldError('depositePaid')}</label>
+	</g:if>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: leaseAgreementInstance, field: 'rent', 'error')} required">
-	<label for="rent">
-		<g:message code="leaseAgreement.rent.label" default="Rent" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:field name="rent" type="number" value="${leaseAgreementInstance.rent}" required=""/>
-
+<div class="form-group">
+	<label>Rent start:</label>
+	<g:datePicker name="rentStart" value="${leaseAgreementInstance.rentStart}" noSelection="['':'-Choose-']" class="form-control" placeholder="Rent start"/>
+	<g:if test="${hasErrors(bean: leaseAgreementInstance, field: 'rentStart', 'error')}">
+		<label class="error-message">${leaseAgreementInstance.error.getFieldError('rentStart')}</label>
+	</g:if>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: leaseAgreementInstance, field: 'rentFinish', 'error')} required">
-	<label for="rentFinish">
-		<g:message code="leaseAgreement.rentFinish.label" default="Rent Finish" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:datePicker name="rentFinish" precision="day"  value="${leaseAgreementInstance?.rentFinish}"  />
-
+<div class="form-group">
+	<label>Rent finish:</label>
+	<g:datePicker name="rentFinish" value="${leaseAgreementInstance.rentFinish}" noSelection="['':'-Choose-']" class="form-control" placeholder="Rent finish"/>
+	<g:if test="${hasErrors(bean: leaseAgreementInstance, field: 'rentFinish', 'error')}">
+		<label class="error-message">${leaseAgreementInstance.error.getFieldError('rentFinish')}</label>
+	</g:if>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: leaseAgreementInstance, field: 'rentStart', 'error')} required">
-	<label for="rentStart">
-		<g:message code="leaseAgreement.rentStart.label" default="Rent Start" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:datePicker name="rentStart" precision="day"  value="${leaseAgreementInstance?.rentStart}"  />
-
+<div class="form-group">
+	<label>Client:</label>
+	<g:select name="client" from="${client}" value="${client.id}" optionKey="id" class="form-control"/>
+	<g:if test="${hasErrors(bean: leaseAgreementInstance, field: 'client', 'error')}">
+		<label class="error-message">${leaseAgreementInstance.error.getFieldError('client')}</label>
+	</g:if>
 </div>
 
+<g:hiddenField name="staff" value="${staff.id}" />
+<g:hiddenField name="rental" value="${rental.id}" />

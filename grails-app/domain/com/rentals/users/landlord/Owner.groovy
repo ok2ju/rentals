@@ -1,7 +1,8 @@
- package com.rentals.users.landlord
+package com.rentals.users.landlord
 
 import com.rentals.Address;
 import com.rentals.Rental
+import com.rentals.LeaseAgreement
 import com.rentals.users.User
 
 class Owner extends User {	

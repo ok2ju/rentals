@@ -22,6 +22,7 @@
                         <th>Sex</th>
                         <th>Position</th>
                         <th>DOB</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -33,6 +34,7 @@
                             <td>${employee.sex}</td>
                             <td>${employee.position}</td>
                             <td>${employee.dob}</td>
+                            <td><a href="<g:createLink action='show' params='[id:employee.id]'/>">Show</a></td>
                             <td><a href="<g:createLink action='edit' params='[id:employee.id]'/>">Edit</a></td>
                         </tr>
                     </g:each>

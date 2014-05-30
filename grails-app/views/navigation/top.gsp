@@ -7,6 +7,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
+            <asset:image src="houselogo.png" class="navbar-logo"/>
             <g:link uri="/" class="navbar-brand">Rentals</g:link>
         </div>
         <div class="collapse navbar-collapse">

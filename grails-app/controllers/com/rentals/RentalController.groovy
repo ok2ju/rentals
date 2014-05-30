@@ -20,11 +20,17 @@ class RentalController {
 	def index(Integer max) {
 		log.debug("index")
 		params.max = Math.min(max ?: 10, 100)
-		[rentals: Rental.list(params), count: Rental.count()]
+		[rentals: rentalService.actualList(params), count: Rental.count()]
 	}
 
+	@Secured('hasAnyRole("ST,MA")')
 	def branchList() {
-		[rentals: rentalService.getBranchRentalList(params.branchId)] 
+		render(view: 'index', model: [rentals: rentalService.getBranchRentalList(params.id)])
+	}
+
+	@Secured('hasAnyRole("ST,MA")')
+	def staffList() {
+		render(view: 'index', model: [rentals: rentalService.getStaffRentalList(params.id)])
 	}
 
 	@Secured('permitAll')
@@ -34,7 +40,7 @@ class RentalController {
 
 	@Secured('hasAnyRole("PO,BO")')
 	def create() {
-		[rentalInstance: new Rental()]
+		[rentalInstance: new Rental(), branches: Branch.list()]
 	}
 
 	@Secured('hasAnyRole("PO,BO")')
@@ -56,7 +62,7 @@ class RentalController {
 			return
 		}
 		rentalService.save(rentalInstance)
-		
+
 		render(view: "image", model: [id: rentalInstance.id])
 	}
 
@@ -72,7 +78,7 @@ class RentalController {
 			respond rentalInstance.errors, view:'edit'
 			return
 		}
-		
+
 		rentalInstance.save(flush:true)
 
 		redirect(action: 'show', params: [id: rentalInstance.id])

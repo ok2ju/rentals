@@ -11,7 +11,7 @@ class EndUser extends User {
     String firstname
     String lastname
     String prefType
-    Integer maxRent
+    Double maxRent
 	
 	static hasMany = [
 		views: View,
@@ -24,5 +24,8 @@ class EndUser extends User {
 		lastname maxSize: 15
 		prefType maxSize: 1, nullable: true
 		maxRent range: 0.00..9999.00, nullable: true
+		views nullable: true
+		rentals nullable: true
+		leaseAgreements nullable: true
 	}
 }

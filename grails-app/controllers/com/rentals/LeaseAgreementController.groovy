@@ -1,102 +1,62 @@
 package com.rentals
 
+import grails.plugin.springsecurity.annotation.Secured
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
+import com.rentals.users.EndUser
+
 
 @Transactional(readOnly = true)
 class LeaseAgreementController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
+    def leaseAgreementService
+    def staffService
+
+    @Secured('hasAnyRole("ST")')
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond LeaseAgreement.list(params), model:[leaseAgreementInstanceCount: LeaseAgreement.count()]
+        [
+            leaseAgreements: LeaseAgreement.list(params), 
+            leaseAgreementInstanceCount: LeaseAgreement.count()
+        ]
     }
 
-    def show(LeaseAgreement leaseAgreementInstance) {
-        respond leaseAgreementInstance
-    }
-
+    @Secured('hasAnyRole("ST")')
     def create() {
-        respond new LeaseAgreement(params)
+        def leaseAgreementInstance = new LeaseAgreement()
+        [
+            leaseAgreementInstance: new LeaseAgreement(), 
+            client: EndUser.list(), 
+            rental: Rental.get(params.rentalId), 
+            staff: staffService.getCurrentUser()
+        ]
     }
-
-    @Transactional
+    
+    @Secured('hasAnyRole("ST")')
     def save(LeaseAgreement leaseAgreementInstance) {
         if (leaseAgreementInstance == null) {
-            notFound()
             return
         }
-
         if (leaseAgreementInstance.hasErrors()) {
-            respond leaseAgreementInstance.errors, view:'create'
+            render(
+                view:'create', 
+                model: [
+                    leaseAgreementInstance: leaseAgreementInstance, 
+                    client: leaseAgreementInstance.client, 
+                    rental: leaseAgreementInstance.rental
+                ]
+            )
             return
         }
+        
+        leaseAgreementInstance.save()
+        def rental = leaseAgreementInstance.rental
+        rental.addToLeaseAgreements(leaseAgreementInstance)
+        rental.save(true)
 
-        leaseAgreementInstance.save flush:true
-
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'leaseAgreement.label', default: 'LeaseAgreement'), leaseAgreementInstance.id])
-                redirect leaseAgreementInstance
-            }
-            '*' { respond leaseAgreementInstance, [status: CREATED] }
-        }
+        redirect(view: 'show', params:[id: leaseAgreementInstance.id])
     }
 
-    def edit(LeaseAgreement leaseAgreementInstance) {
-        respond leaseAgreementInstance
-    }
-
-    @Transactional
-    def update(LeaseAgreement leaseAgreementInstance) {
-        if (leaseAgreementInstance == null) {
-            notFound()
-            return
-        }
-
-        if (leaseAgreementInstance.hasErrors()) {
-            respond leaseAgreementInstance.errors, view:'edit'
-            return
-        }
-
-        leaseAgreementInstance.save flush:true
-
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'LeaseAgreement.label', default: 'LeaseAgreement'), leaseAgreementInstance.id])
-                redirect leaseAgreementInstance
-            }
-            '*'{ respond leaseAgreementInstance, [status: OK] }
-        }
-    }
-
-    @Transactional
-    def delete(LeaseAgreement leaseAgreementInstance) {
-
-        if (leaseAgreementInstance == null) {
-            notFound()
-            return
-        }
-
-        leaseAgreementInstance.delete flush:true
-
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'LeaseAgreement.label', default: 'LeaseAgreement'), leaseAgreementInstance.id])
-                redirect action:"index", method:"GET"
-            }
-            '*'{ render status: NO_CONTENT }
-        }
-    }
-
-    protected void notFound() {
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.not.found.message', args: [message(code: 'leaseAgreement.label', default: 'LeaseAgreement'), params.id])
-                redirect action: "index", method: "GET"
-            }
-            '*'{ render status: NOT_FOUND }
-        }
-    }
 }

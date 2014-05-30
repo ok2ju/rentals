@@ -13,8 +13,8 @@ class ManagerNavigation extends AbstractNavigation {
 			path: g.createLink([uri:'/'])
 		))
 		links.add(new Link(
-			title: 'Employee',
-			path: g.createLink(controller: 'employee', action: 'list')
+			title: 'Staff',
+			path: g.createLink(controller: 'staff', action: 'list')
 		))
 		
 		checkActive(links, forwardURI)

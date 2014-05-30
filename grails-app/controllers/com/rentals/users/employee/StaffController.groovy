@@ -13,24 +13,57 @@ class StaffController {
 	static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
 	def staffService
+	def rentalService
 
-	@Secured('hasRole("MA")')
+	@Secured('hasRole("ST")')
+	def rentals() {
+		[
+			rentals: staffService.getCurrentUser().rentals,
+			panelheading: 'Full rental list.'
+		]
+	}
+
+	@Secured('hasRole("ST")')
+	def actualRentals() {
+		render(
+			view:'rentals', 
+			model: [
+				rentals: rentalService.getActualStaffRentalList(staffService.getCurrentId()),
+				panelheading: 'Actual rental list.'
+			]
+		)
+	}
+
+	@Secured('hasRole("ST")')
+	def leaseAgreements() {
+		render(
+			view:'/leaseAgreement/list', 
+			model:[
+				leaseAgreements: staffService.getCurrentUser().leaseAgreements
+			]
+		)
+	}
+
+	@Secured('hasAnyRole("ST,MA")')
 	def show() {
-		[userInstance: Staff.get(params.id)]
+		def staff = null
+		if(params.id == null) {
+			staff = staffService.getCurrentUser()
+		} else {
+			staff = Staff.get(params.id)
+		}
+		[userInstance: staff]
 	}
 
     @Secured('hasRole("MA")')
 	def list(Integer max) {
 		log.debug("index")
 		params.max = Math.min(max ?: 10, 100)
-		render(
-			view: "/employee/list", 
-		    model: [
-				employees: Staff.list(params), 
-				panelheading: 'Staff list',
-				count: Staff.count()
-			]
-		)
+		[
+			employees: Staff.list(params), 
+			panelheading: 'Staff list',
+			count: Staff.count()
+		]
 	}
 
     @Secured('hasRole("MA")')
@@ -69,7 +102,10 @@ class StaffController {
 		}
 		staffService.save(userInstance)
 
-		redirect(action: 'show', params: [id: userInstance.id])
+		redirect(
+			action: 'show', 
+			params: [id: userInstance.id]
+		)
 	}
 
 	@Secured('hasRole("MA")')
@@ -83,7 +119,10 @@ class StaffController {
 		}
 		staffService.save(userInstance)
 
-		redirect(action: 'show', params: [id: userInstance.id])
+		redirect(
+			action: 'show', 
+			params: [id: userInstance.id]
+		)
 	}
 
 }

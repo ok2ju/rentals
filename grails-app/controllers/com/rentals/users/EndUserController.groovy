@@ -7,18 +7,29 @@ import grails.transaction.Transactional
 import org.apache.commons.logging.Log
 import org.apache.commons.logging.LogFactory
 
+@Transactional(readOnly = true)
 class EndUserController {
 	
 	private static final Log log = LogFactory.getLog(EndUserController.class)
 	
 	def endUserService
 	
+	@Secured('hasRole("EU")')
+	def rentals() {
+    	[rentals: endUserService.getCurrentUser().rentals]
+    }
+
+    @Secured('hasRole("EU")')
+	def leaseAgreements() {
+		[leaseAgreements: endUserService.getCurrentUser().leaseAgreements]
+	}
+
 	@Secured('permitAll')
     def register() {
 		[userInstance: new EndUser()]
 	}
 	
-	@Secured('permitAll')
+	@Secured('hasRole("EU")')
 	@Transactional
 	def save(EndUser userInstance) {
 		if (userInstance == null) {

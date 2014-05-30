@@ -13,7 +13,6 @@ class NavigationController {
 	def navigationService
 	
     def top() {
-    	log.debug("Create top navigation")
 		AbstractNavigation abstractNavigation = navigationService.getNavigation(g)
         [links: abstractNavigation.getTopLinks(request.forwardURI), actionList: abstractNavigation.getActions()] 
     }

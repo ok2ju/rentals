@@ -13,12 +13,5 @@ import com.rentals.users.AbstractUserService
 class OwnerService extends AbstractUserService<Owner> {
 	
 	private static final Log log = LogFactory.getLog(OwnerService.class)
-	
-    def list() {
-		getCurrentUser().rentals
-    }
-	
-	def getCurrentUser() {
-		return Owner.get(springSecurityService.principal.id)
-	}
+
 }

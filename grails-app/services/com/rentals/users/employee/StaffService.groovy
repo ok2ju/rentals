@@ -13,5 +13,9 @@ import com.rentals.users.AbstractUserService
 class StaffService extends AbstractUserService<Staff> {
 	
 	private static final Log log = LogFactory.getLog(StaffService.class)
+
+	def findFree(Long branchId) {
+		Staff.where({branch.id == branchId && rentals.size() <= 10}).find()
+	}
 	
 }
