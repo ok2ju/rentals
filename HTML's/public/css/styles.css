@@ -6109,19 +6109,16 @@ button.close {
 }
 .add-rent .add-rent-row {
   margin-top: 61px;
+  padding-bottom: 50px;
+}
+.add-rent .add-rent-row .add-rent-form {
+  max-width: inherit;
 }
 .add-rent .add-rent-row .add-rent-form .rental-more-info {
   height: 70px;
 }
-.add-rent .add-rent-row .fileupload {
-  margin-top: 175px;
-}
-.add-rent .add-rent-row .fileupload .fileupload-preview {
-  width: 100%;
-  height: auto;
-}
-.add-rent .add-rent-row .secondary-menu-one {
-  margin-top: 205px;
+.add-rent .add-rent-row .add-rent-form .fileupload-exists {
+  padding-left: 0;
 }
 .not-found-message h1 {
   font-size: 80px;
