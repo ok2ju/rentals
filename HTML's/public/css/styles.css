@@ -6139,6 +6139,12 @@ button.close {
 .user-profile-container .well {
   min-height: 330px;
 }
+.success-rent-request {
+  margin-top: 250px;
+}
+.success-rent-request .message-request h1 {
+  font-size: 60px;
+}
 body {
   background-color: #fbfbfb;
 }
